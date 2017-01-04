@@ -18,7 +18,6 @@
   <div id="map"></div>
 
   <script>
-
   var czechBounds = [[48.367610, 11.632914],[50.980860, 19.171854]];
   // initialize the map
   var map = L.map('map').fitBounds(czechBounds).locate();
@@ -38,72 +37,7 @@
     "weight": 5,
     "opacity": 0.65
 };
-$.getJSON("okrsky.geojson", function (geojson) {
-    var geojsonLayer = L.geoJson(geojson, {
-      style: function (FeatureCollection) {
-      return {
-        'weight': 1,
-        'opacity': 1,
-        'color': 'black',
-        'dashArray': 2,
-        'fillOpacity': 0,
-        };
-      },    
-      onEachFeature: function(FeatureCollection, layer){
-        layer.bindPopup("<strong>" + "Okrsek: " + FeatureCollection.properties.Name + "</strong><br/>");
-    }
-  }).addTo(map);
-    controlLayers.addOverlay(geojsonLayer, 'okrsky');
-  });
-$.getJSON("podcelky.geojson", function (geojson) {
-    var geojsonLayer = L.geoJson(geojson, {
-      style: function (FeatureCollection) {
-      return {
-        'weight': 1,
-        'opacity': 1,
-        'color': 'black',
-        'fillOpacity': 0,
-        };
-      },    
-      onEachFeature: function(FeatureCollection, layer){
-        layer.bindPopup("<strong>" + "Podcelek: " + FeatureCollection.properties.Name + "</strong><br/>");
-    }
-  }).addTo(map);
-    controlLayers.addOverlay(geojsonLayer, 'podcelky');
-  });
-$.getJSON("celky.geojson", function (geojson) {
-    var geojsonLayer = L.geoJson(geojson, {
-      style: function (FeatureCollection) {
-      return {
-        'weight': 2.6,
-        'opacity': 1,
-        'color': 'black',
-        'fillOpacity': 0,
-        };
-      },    
-      onEachFeature: function(FeatureCollection, layer){
-        layer.bindPopup("<strong>" + "Celek: " + FeatureCollection.properties.Name + "</strong><br/>");
-    }
-  }).addTo(map);
-    controlLayers.addOverlay(geojsonLayer, 'celky');
-  });
-  $.getJSON("oblasti.geojson", function (geojson) {
-    var geojsonLayer = L.geoJson(geojson, {
-      style: function (FeatureCollection) {
-      return {
-        'weight': 4.6,
-        'opacity': 1,
-        'color': 'black',
-        'fillOpacity': 0,
-        };
-      },    
-      onEachFeature: function(FeatureCollection, layer){
-        layer.bindPopup("<strong>" + "Oblast: " + FeatureCollection.properties.Name + "</strong><br/>");
-    }
-  }).addTo(map);
-    controlLayers.addOverlay(geojsonLayer, 'oblasti');
-  });
-  $.getJSON("subprovincie.geojson", function (geojson) {
+  $.getJSON("https://github.com/josedlacek/mapa/blob/popup/subprovincie.geojson", function (geojson) {
     var geojsonLayer = L.geoJson(geojson, {
       style: function (FeatureCollection) {
       return {
